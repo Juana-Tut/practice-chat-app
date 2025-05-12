@@ -12,8 +12,8 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/2016114132/chat-app-final-project/metrics"
-	"github.com/2016114132/chat-app-final-project/shared"
+	"github.com/Juana-Tut/practice-chat-app/tcp/metrics"
+	"github.com/Juana-Tut/practice-chat-app/shared"
 )
 
 const (
@@ -71,7 +71,7 @@ func main() {
 	go readFromServer(ctx, conn, clientMetrics, errChan)
 	
 	// Start goroutine to send messages to server
-	go writeToServer(ctx, conn, nickname, clientMetrics, errChan)
+	go writeToServer(ctx, conn, clientMetrics, errChan)
 	
 	// Periodically report metrics
 	go func() {
@@ -205,7 +205,7 @@ func readFromServer(ctx context.Context, conn net.Conn, metrics *metrics.ClientM
 }
 
 // writeToServer handles sending messages to the server
-func writeToServer(ctx context.Context, conn net.Conn, nickname string, metrics *metrics.ClientMetrics, errChan chan<- error) {
+func writeToServer(ctx context.Context, conn net.Conn, metrics *metrics.ClientMetrics, errChan chan<- error) {
 	reader := bufio.NewReader(os.Stdin)
 	
 	for {

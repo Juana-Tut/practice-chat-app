@@ -10,7 +10,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/2016114132/chat-app-final-project/shared"
+	"github.com/Juana-Tut/practice-chat-app/shared"
 )
 
 // clients is a concurrent-safe map of all connected clients and their nicknames.
@@ -216,7 +216,7 @@ func closeConnection(conn net.Conn, name string, abnormal bool) {
 		serverMetrics.ClientDisconnected(abnormal)
 		
 		// Notify other clients about the disconnection
-		for client, clientName := range clients {
+		for client, name := range clients {
 			if client != conn {
 				client.Write([]byte(fmt.Sprintf("Server: %s has left the chat.\n", name)))
 				serverMetrics.MessageSent()

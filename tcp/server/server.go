@@ -7,11 +7,11 @@ import (
 	"net"
 	"os"
 	"os/signal"
-	"sync"
+	//"sync"
 	"syscall"
 	"time"
 
-	"github.com/2016114132/chat-app-final-project/metrics"
+	"github.com/Juana-Tut/practice-chat-app/tcp/metrics"
 )
 
 // Global server metrics instance

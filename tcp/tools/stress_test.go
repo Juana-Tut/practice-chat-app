@@ -10,11 +10,12 @@ import (
 	"net"
 	"os"
 	"os/signal"
+	"strings"
 	"sync"
 	"syscall"
 	"time"
 
-	"github.com/2016114132/chat-app-final-project/shared"
+	//"github.com/Juana-Tut/practice-chat-app/shared"
 )
 
 // Test configuration flags
@@ -49,7 +50,7 @@ type testStats struct {
 	TotalErrors      int
 	TotalReconnects  int
 	StartTime        time.Time
-	mu               sync.Mutex
+	//mu               sync.Mutex
 }
 
 // Global test statistics
@@ -124,7 +125,7 @@ func main() {
 			// Test duration has elapsed
 			fmt.Println("Test duration completed")
 			cancel()
-			break
+			//break
 			
 		case <-eventTicker.C:
 			if *dropRate > 0 && rand.Float64() < *dropRate {
